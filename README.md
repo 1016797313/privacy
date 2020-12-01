@@ -67,7 +67,7 @@ CREATE TABLE sf
 
 把 `6.9更新总库.txt` 文件放到项目根目录下，然后执行 `python scripts/qq.py`。
 
-3.导入京东库
+3. 导入京东库
 
 把 `www_jd_com_12g.txt` 文件放到项目根目录下，然后执行 `python scripts/jd.py`。
 
@@ -78,8 +78,11 @@ sqlite3 database.db
 ```
 
 ```sql
-CREATE INDEX index_qq ON qq (qq_number, phone_number);
-CREATE INDEX index_jd ON jd (email, id_number, phone_number);
+CREATE INDEX index_qq_qq_number ON qq (qq_number);
+CREATE INDEX index_qq_phone_number ON qq (phone_number);
+CREATE INDEX index_jd_email ON jd (email);
+CREATE INDEX index_jd_id_number ON jd (id_number);
+CREATE INDEX index_jd_phone_number ON jd (phone_number);
 ```
 
 4. 导入顺丰库
@@ -110,7 +113,7 @@ git clone http://github.com/kallydev/privacy
 4. 编译前端
 
 ```bash
-cd privacy
+cd website
 yarn install
 yarn build
 ```
@@ -118,7 +121,7 @@ yarn build
 5. 编译后端
 
 ```bash
-cd ../server
+cd server
 go build -o app main/main.go
 ```
 
